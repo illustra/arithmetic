@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>addition</title>
+		<title>Mathcercise</title>
 		<meta name="charset" content="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<!-- Styles -->
+		<link rel="stylesheet" type="text/css" href="fonts/font.min.css">
+		<link rel="stylesheet" type="text/css" href="styles/style.css">
+
+		<!-- Favicons for all platforms - favicongenerator.com -->
 		<link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
 		<link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32">
 		<link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16">
@@ -15,35 +20,73 @@
 		<meta name="theme-color" content="#4f5d73">
 	</head>
 	<body>
-		<div id="selector">
-			<a href="#" data-range="5,50"><div id="one">
-				<h1>two digits</h1>
-			</div></a>
-			<a href="#" data-range="25,200"><div id="two">
-				<h1>three digits</h1>
-			</div></a>
-			<a href="#" data-range="25,2000"><div id="three">
-				<h1>four digits</h1>
-			</div></a>
-			<a href="#" data-range="250,20000"><div id="four">
-				<h1>five digits</h1>
-			</div></a>
+		<div id="mainmenu">
+			<div id="gametitle">
+				<h1>mathcercise</h1>
+			</div>
+			<div id="modeselector">
+				<table>
+					<tr><td class="title" colspan="4">
+						<h2>Select Mode</h2>
+					</td></tr>
+					<tr class="options">
+						<td class="o1" data-mode="1">
+							<h3>+</h3>
+						</td>
+						<td class="o2" data-mode="2">
+							<h3>-</h3>
+						</td>
+						<td class="o3" data-mode="3">
+							<h3>&times;</h3>
+						</td>
+						<td class="o4" data-mode="4">
+							<h3>&divide;</h3>
+						</td></a>
+					</tr>
+				</table>
+			</div>
+			<div id="levelselector">
+				<table>
+					<tr><td class="title" colspan="4">
+						<h2>Select Number of Digits</h2>
+					</td></tr>
+					<tr class="options">
+						<td class="o1" data-range="5-50">
+							<h3>2</h3>
+						</td>
+						<td class="o2" data-range="25-200">
+							<h3>3</h3>
+						</td>
+						<td class="o3" data-range="250-2000">
+							<h3>4</h3>
+						</td>
+						<td class="o4" data-range="2500-20000">
+							<h3>5</h3>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		<div id="app">
-			<div class="controls">
-				<button id="main">back to menu</button>
+			<div class="controls top" id="main">
+				<h2>quit game</h2>
 			</div>
-			<table>
-			    <tr><td colspan="2" id="addendOne"></td></tr>
-			    <tr><td>+</td><td id="addendTwo"></td></tr>
-			    <tr><td>=</td><td id="result"></td></tr>
-			</table>
-			<div class="controls">
-				<button id="control">check</button>
+			<div id="playground">
+				<h3>Compute the answer on your own,<br>then check to see if you're right!</h3>
+				<table>
+				    <tr><td colspan="2" id="termOne"></td></tr>
+				    <tr><td id="op"></td><td id="termTwo"></td></tr>
+				    <tr><td>=</td><td id="result"></td></tr>
+				</table>
+			</div>
+			<div class="controls bottom" id="check">
+				<h2>check</h2>
 			</div>
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-		<script src="script.js">check</script>
+		<script src="scripts/ux.min.js"></script>
+		<script src="scripts/game.min.js"></script>
+		<!-- <script src="scripts/audio.js"></script> -->
 	</body>
 </html>

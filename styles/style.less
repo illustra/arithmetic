@@ -1,0 +1,157 @@
+// Resets
+*::before, *::after { box-sizing: border-box }
+html, body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.ease(@prop) {
+	-webkit-transition: @prop .15s linear;
+	-moz-transition: @prop .15s linear;
+	-o-transition: @prop .15s linear;
+	transition: @prop .15s linear;
+}
+@keyframes pulsestart {
+	from { background: #4aaca5 }
+	to { background: #327671 }
+}
+
+body {
+	* {
+		font-family: 'Elliot Sans', 'Helvetica Neue', 'Roboto', sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-transform: uppercase;
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none; /* Chrome/Safari/Opera */
+		-khtml-user-select: none; /* Konqueror */
+		-moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* Internet Explorer/Edge */
+		user-select: none; /* Non-prefixed version, currently not supported by any browser */
+	}
+	h1, h2, h3, h4, h5, h6 { margin: 0 0 -5px 0 }
+	
+	#mainmenu {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 5;
+		* { color: white }
+
+		#gametitle {
+			background: #333;
+			height: 20%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.ease(background);
+
+			h1 { font-size: 3rem }
+			&.active {
+				background: #4aaca5;
+				animation: pulsestart 1s ease 0s infinite alternate;
+				cursor: pointer;
+			}
+		}
+		#modeselector, #levelselector { height: 40% }
+		#modeselector { background: #343cc2 }
+		#levelselector { background: #c249ab }
+
+		table {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			border-collapse: collapse;
+
+			td {
+				text-align: center;
+				width: 25%;
+				.ease(background);
+				h3 { font-size: 4rem }
+				&.active {
+					background: #d1c106;
+					h3 { color: #222 }
+				}
+			}
+			.o1 { background: rgba(0,0,0,0.2) }
+			.o2 { background: rgba(0,0,0,0.4) }
+			.o3 { background: rgba(0,0,0,0.6) }
+			.o4 { background: rgba(0,0,0,0.8) }
+		}
+
+		& > div {
+			display: inline-block;
+			float: left;
+			width: 100%;
+
+			.title {
+				height: 20%;
+				width: 100%;
+			}
+			.options div {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+				float: left;
+				height: 80%;
+				width: 25%;
+			}
+		}
+	}
+
+	#app {
+		background: #444;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		* {
+			text-align: center;
+			color: #eee;
+		}
+		
+		#playground {
+			td, h3 { text-transform: none }
+			h3 { margin-bottom: 1.5em }
+			table { margin: 0 auto }
+			td {
+				font-size: 4rem;
+				font-family: 'M+1m', 'Ubuntu Mono', 'Monaco', 'Consolas', monospace;
+				text-align: right;
+			}
+			#result { color: #12c12f }
+		}
+
+		.controls {
+			background: #222;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: fixed;
+			left: 0;
+			width: 100%;
+			height: 80px;
+			.ease(background);
+
+			&.top {
+				top: 0;
+				&:hover { background: #c12f2f }
+			}
+			&.bottom {
+				bottom: 0;
+				&:hover {
+					background: #eee;
+					h2 { color: #222 }
+				}
+				&.next:hover { background: #12c12f !important }
+			}
+		}
+	}
+}
