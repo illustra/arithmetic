@@ -1,6 +1,5 @@
 Mathcercise.game = {
 	result: 0,
-	check: true,
 
 	generateTerm: function(min,max) {
 		// Generate number within set range
@@ -9,24 +8,21 @@ Mathcercise.game = {
 		return Math.ceil(Math.random() * (max - min + 1)) + min;
 	},
 	begin: function(){
-		this.check = false;
-		this.result = 0;
 		this.mode();
 		$("#result").text("");
 		$("#check").removeClass("next");
 		$("#check h2").text("check");
 	},
 	handler: function() {
-		var that = Mathcercise.game;
-		this.check = !this.check;
-		if (this.check) {
-			var result = that.result;
+		var result = Mathcercise.game.result;
+		if (result != 0) {
+			Mathcercise.game.result = 0;
 			$("#result").text(result);
 			console.log(result);
 			$("#check").addClass("next");
 			$("#check h2").text("next");
 		} else {
-			that.mode();
+			Mathcercise.game.mode();
 			$("#result").text("");
 			$("#check").removeClass("next");
 			$("#check h2").text("check");

@@ -3,7 +3,7 @@
 	<head>
 		<title>Mathcercise</title>
 		<meta name="charset" content="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 		<!-- Styles -->
 		<link rel="stylesheet" type="text/css" href="fonts/font.min.css">
@@ -60,11 +60,45 @@
 						<td class="o3" data-range="1000-9999">
 							<h3>4</h3>
 						</td>
-						<td class="o4" data-range="10000-99999">
-							<h3>5</h3>
+						<td class="o4">
+							<h3>custom</h3>
 						</td>
 					</tr>
 				</table>
+			</div>
+			<div id="customlevel" style="display:none">
+				<div id="dialog">
+					<div id="dialogtitle">
+						<h3>How many digits?</h3>
+					</div>
+					<div id="dialogentered">
+						<h1 id="entered"></h1>
+					</div>
+					<div id="dialogentry">
+						<table>
+							<tr>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>5</td>
+								<td>6</td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td>8</td>
+								<td>9</td>
+							</tr>
+							<tr>
+								<td data-action="done"><img src="img/tick.svg" alt="Done"></td>
+								<td>0</td>
+								<td data-action="delete"><img src="img/backspace.svg" alt="Delete"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="app">
@@ -72,7 +106,7 @@
 				<h2>quit game</h2>
 			</div>
 			<div id="playground">
-				<h3>Solve for the answer in your head or on paper,<br>then check to see if you're right!</h3>
+				<h3>Solve for the answer on paper,<br>then check to see if you're right!</h3>
 				<table>
 				    <tr><td colspan="2" id="termOne"></td></tr>
 				    <tr><td id="op"></td><td id="termTwo"></td></tr>
@@ -85,6 +119,7 @@
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="scripts/fastclick.min.js"></script>
 		<script src="scripts/ux.min.js"></script>
 		<script src="scripts/game.min.js"></script>
 		<!-- <script src="scripts/audio.js"></script> -->

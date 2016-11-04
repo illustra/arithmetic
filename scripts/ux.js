@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	// Eliminate 300ms latency on touch devices
+	FastClick.attach(document.body);
+
 	// Handlers
 	$("#check").click(Mathcercise.game.handler);
 	$("#main").click(Mathcercise.endGame);
@@ -25,18 +28,60 @@ $(document).ready(function(){
 	$("#levelselector .options td").each(function(){
 		$(this).click(function(){
 			if (!$(this).hasClass("active")) {
-				// Set this as active
-				var cr = Mathcercise.params.range;
+				$("#levelselector td.active").removeClass("active");
 				$(this).addClass("active");
-				$("td[data-range=" + cr[0] + "-" + cr[1] + "]").removeClass("active");
 				
-				var nr = ($(this).attr("data-range")).split("-");
-				Mathcercise.params.range = [ parseInt(nr[0]), parseInt(nr[1]) ];
+				if ($(this).hasClass("o4")) {
+					// Custom range
+					$("#customlevel").fadeIn(150);
+				} else {
+					// Set this as active
+					var cr = Mathcercise.params.range;
+					var nr = ($(this).attr("data-range")).split("-");
+					Mathcercise.params.range = [ parseInt(nr[0]), parseInt(nr[1]) ];
+				}
 			} else {
 				$(this).removeClass("active");
 				Mathcercise.params.range = [null, null];
 			}
 			Mathcercise.checkIfReady();
+		});
+	});
+	$("#dialogentry td").each(function(){
+		$(this).click(function(){
+			var entered = $("#entered").text();
+
+			if (!$(this).attr("data-action") && entered.length < 2) {
+				// Add number to entry
+				var no = $(this).text();
+				$("#entered").text(entered + no);
+			} else {
+				var action = $(this).attr("data-action");
+
+				if (action == "done") {
+					var digits = parseInt(entered);
+
+					// Cancel entry
+					if (entered.length == 0) {
+						$("#customlevel").fadeOut(150);
+						$("#levelselector .o4").removeClass("active");
+					} else if (isNaN(digits) || digits < 1 || digits > 10) {
+						// Too large or too small
+						$("#dialogtitle h3").text("1 to 10 only.");
+						window.setTimeout(function(){ $("#dialogtitle h3").text("How many digits?") }, 2500);
+					} else {
+						// Set range
+						var min = Math.pow(10, digits - 1),  // 1, 10, 100...
+							max = Math.pow(10, digits) - 1;  // 9, 99, 999...
+						Mathcercise.params.range = [min, max];
+						Mathcercise.checkIfReady();
+						$("#customlevel").fadeOut(150);
+					}
+				} else if (action == "delete") {
+					// Remove last number
+					$("#entered").text(entered.slice(0,-1));
+				}
+			}
 		});
 	});
 });
