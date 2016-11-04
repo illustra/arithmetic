@@ -65,9 +65,9 @@ $(document).ready(function(){
 					if (entered.length == 0) {
 						$("#customlevel").fadeOut(150);
 						$("#levelselector .o4").removeClass("active");
-					} else if (isNaN(digits) || digits < 1 || digits > 10) {
+					} else if (isNaN(digits) || digits < 5 || digits > 10) {
 						// Too large or too small
-						$("#dialogtitle h3").text("1 to 10 only.");
+						$("#dialogtitle h3").text("5 to 10 only.");
 						window.setTimeout(function(){ $("#dialogtitle h3").text("How many digits?") }, 2500);
 					} else {
 						// Set range
