@@ -62,7 +62,7 @@ $(document).ready(function(){
 					var digits = parseInt(entered);
 
 					// Cancel entry
-					if (entered.length == 0) {
+					if (entered.length == 0 || digits == 0) {
 						$("#customlevel").fadeOut(150);
 						$("#levelselector .o4").removeClass("active");
 					} else if (isNaN(digits) || digits < 5 || digits > 10) {
